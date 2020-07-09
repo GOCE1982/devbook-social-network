@@ -9,7 +9,7 @@ const User = require('../../models/User');
 const validateProfileInput = require('../../validation/profile');
 const validateExperienceInput = require('../../validation/experience');
 const validateEducationInput = require('../../validation/education');
-const experience = require('../../validation/experience');
+// const experience = require('../../validation/experience');
 
 // @route  GET api/profile/test
 // @desc   Tests profile route
