@@ -12,7 +12,7 @@ const app = express();
 const db = require('./config/keys').mongoURI;
 
 mongoose
-    .connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
+    .connect(db, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false })
     .then(() => console.log('MongoDB connected!'))
     .catch(err => console.log(err));
 
