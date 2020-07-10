@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
 
         res.json(posts);
     })
-    .catch(err => res.status(404).json({ post: err }));
+    .catch(err => res.status(404).json({ noposts: 'There are no posts found' }));
 });
 
 // @route  GET api/posts/:id
@@ -65,10 +65,10 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
     newPost.save().then(post => res.json(post));
 });
 
-// @route  Delete api/posts/:id
+// @route  DELETE api/posts/:id
 // @desc   Delete post
 // @access Private
-router.delete('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
+router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
     Profile.findOne({ user: req.user.id })
         .then(profile => {
             Post.findById(req.params.id)
@@ -81,6 +81,30 @@ router.delete('/:id', passport.authenticate('jwt', {session: false}), (req, res)
                 })
                 .catch(err => res.status(404).json({ postnotfound: 'No post found' }))
         });
+});
+
+// @route  PUT api/posts/:id
+// @desc   Edit post
+// @access Private
+router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    
+    Profile.findOne({ user: req.user.id })
+        .then(profile => {
+            const postFields = {};
+            postFields.text = req.body.text;
+            postFields.name = req.body.name;
+
+            Post.findByIdAndUpdate({_id: req.params.id}, { $set: postFields }, { new: true })
+                .then(post => {
+
+                    if(post.user.toString() !== req.user.id) {
+                        return res.status(401).json({ notauthorized: 'User not authorized' });
+                    }
+                    post.save(postFields).then((post) => res.json(post))
+                })
+                .catch(err => res.status(500).json({ postnotupdated: 'Post was not updated' }))
+        })
+        .catch(err => res.json({msg: 'The promise did not run'}));
 });
 
 module.exports = router;
