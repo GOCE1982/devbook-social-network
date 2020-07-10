@@ -92,10 +92,10 @@ router.put('/:id', passport.authenticate('jwt', { session: false }), (req, res) 
         .then(profile => {
             const postFields = {};
             postFields.text = req.body.text;
-            postFields.name = req.body.name;
+            // postFields.name = req.body.name;
             if(req.body.user) postFields.user = req.user.id;
 
-            Post.findOneAndUpdate(req.params.id, { $set: postFields }, { new: true })
+            Post.findByIdAndUpdate(req.params.id, { $set: postFields }, { new: true })
                 .populate(['likes', 'comments'])
                 .then(post => {
 

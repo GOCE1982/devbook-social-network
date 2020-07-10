@@ -14,6 +14,10 @@ module.exports = function validatePostInput(data) {
         errors.text = 'Text field is required';
     }
 
+    if(!Validator.isLength(data.name, { min: 6, max: 40 })) {
+        errors.name = 'Name of post must be between 6 and 40 characters'
+    }
+
     return {
         errors,
         isValid: isEmpty(errors)
