@@ -43,6 +43,10 @@ img {
   min-height: 100vh;
 }
 
+#content {
+  padding-bottom: 3rem;
+}
+
 #footer {
   position: absolute;
   bottom: 0;
