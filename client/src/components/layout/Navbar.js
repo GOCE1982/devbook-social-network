@@ -18,9 +18,9 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <a className="nav-link" href="/dashboard">
+          <Link className="nav-link" to="/dashboard">
             Dashboard
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
           <a
@@ -31,7 +31,7 @@ class Navbar extends Component {
             <img
               className="rounded-circle"
               src={user.avatar}
-              style={{ width: "1rem", marginRight: "10px" }}
+              style={{ width: "1rem", marginRight: "5px" }}
               alt={user.name}
               tiitle="You must have a Gravatar connected to your email to display an image."
             />{" "}
