@@ -20,6 +20,7 @@ import EditProfile from "./components/edit-profile/EditProfile";
 import AddExperience from "./components/add-background/AddExperience";
 import AddEducation from "./components/add-background/AddEducation";
 import Profiles from "./components/profiles/Profiles";
+import Profile from "./components/profile/Profile";
 
 import "./App.css";
 
@@ -49,6 +50,7 @@ class App extends Component {
               <Route exact path="/register" component={Register}></Route>
               <Route exact path="/login" component={Login}></Route>
               <Route exact path="/profiles" component={Profiles}></Route>
+              <Route exact path="/profile/:handle" component={Profile}></Route>
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
