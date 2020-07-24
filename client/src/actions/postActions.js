@@ -29,6 +29,20 @@ export const addPost = (postData) => (dispatch) => {
     );
 };
 
+// Update post
+export const updatePost = (postId, newPost, history) => (dispatch) => {
+  dispatch(clearErrors);
+  axios
+    .put(`/api/posts/${postId}`, newPost)
+    .then((res) => history.push("/feed"))
+    .catch((err) =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      })
+    );
+};
+
 // Get Posts
 export const getPosts = () => (dispatch) => {
   dispatch(setPostLoading());
