@@ -6,6 +6,7 @@ const TextAreaFieldGroup = ({
   name,
   placeholder,
   value,
+  rows,
   error,
   info,
   onChange,
@@ -19,6 +20,7 @@ const TextAreaFieldGroup = ({
         placeholder={placeholder}
         name={name}
         value={value}
+        rows={rows}
         onChange={onChange}
       />
       {info && <small className="form-text text-muted">{info}</small>}
@@ -31,6 +33,7 @@ TextAreaFieldGroup.propTypes = {
   name: PropTypes.string.isRequired,
   paceholder: PropTypes.string,
   value: PropTypes.string.isRequired,
+  rows: PropTypes.string,
   info: PropTypes.string,
   error: PropTypes.string,
   onChange: PropTypes.func.isRequired,

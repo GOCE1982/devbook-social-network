@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { updatePost, getPost } from "../../actions/postActions";
 import PropTypes from "prop-types";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
@@ -84,6 +84,7 @@ class EditPost extends Component {
                   <TextAreaFieldGroup
                     placeholder="Update post"
                     name="text"
+                    rows="5"
                     value={this.state.text}
                     onChange={this.onChange}
                     error={errors.text}
@@ -92,6 +93,9 @@ class EditPost extends Component {
                 <button type="submit" className="btn btn-dark">
                   Update Post
                 </button>
+                <Link className="btn btn-outline-info ml-4" to="/feed">
+                  Discard Changes
+                </Link>
               </form>
             </div>
           </div>
