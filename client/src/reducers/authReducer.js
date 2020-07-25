@@ -4,7 +4,6 @@ import { SET_CURRENT_USER, REGISTER_SUCCESS } from "../actions/types";
 
 const initialState = {
   isAuthenticated: false,
-  token: localStorage.getItem("token"),
   user: {},
 };
 

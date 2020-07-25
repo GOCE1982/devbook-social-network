@@ -37,7 +37,6 @@ export const deleteAccount = () => (dispatch) => {
       .then((res) =>
         dispatch({
           type: SET_CURRENT_USER,
-          token: null,
           isAuthenticated: false,
           payload: {},
         })
