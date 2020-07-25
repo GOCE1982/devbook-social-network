@@ -31,11 +31,14 @@ export const getCurrentProfile = () => (dispatch) => {
 // Delete Account & Profile
 export const deleteAccount = () => (dispatch) => {
   if (window.confirm("Are you sure? This cannot be undone!")) {
+    localStorage.removeItem("jwtToken");
     axios
       .delete("/api/profile")
       .then((res) =>
         dispatch({
           type: SET_CURRENT_USER,
+          token: null,
+          isAuthenticated: false,
           payload: {},
         })
       )
