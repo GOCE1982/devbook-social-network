@@ -90,10 +90,10 @@ class EditPost extends Component {
                     error={errors.text}
                   />
                 </div>
-                <button type="submit" className="btn btn-dark">
+                <button type="submit" className="btn btn-info">
                   Update Post
                 </button>
-                <Link className="btn btn-outline-info ml-4" to="/feed">
+                <Link className="btn btn-outline-danger ml-4" to="/feed">
                   Discard Changes
                 </Link>
               </form>
