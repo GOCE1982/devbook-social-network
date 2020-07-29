@@ -1,4 +1,4 @@
-# devbook-social-network
+# DevBook- Developers' Social Network
 
 Social network for developers (MERN stack = MongoDB + Express + React + Node.js). Redux is used for a state management.
 
